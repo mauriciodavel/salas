@@ -1,0 +1,30 @@
+<?php 
+
+include("conexao.php");
+
+$consulta = "SELECT * FROM tb_pessoas";
+$con = $mysqli->query($consulta) or die($mysqli->error);
+?>
+<html>
+	<head>
+		<meta charset="utf8">
+	<head>
+	<body>
+		<table>
+			<tr>
+				<td>ID</td>
+				<td>Nome</td>
+				<td>E-mail</td>
+				<td>Telefone</td>
+			</tr>
+			<?php while($dado = $con->fetch_array()){ ?>
+			<tr>	
+				<td><?php echo $dado["id_pessoa"]; ?></td>
+				<td><?php echo $dado["nome_pessoa"]; ?></td>
+				<td><?php echo $dado["mail_pessoa"]; ?></td>
+				<td><?php echo $dado["tel_pessoa"]; ?></td>
+			</tr>
+			<?php } ?>
+		</table>
+	<body>
+</html>
